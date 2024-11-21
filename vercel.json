@@ -1,0 +1,14 @@
+{
+    "version": 2,
+  
+   
+    "build": {
+      "env": {
+        "NODE_VERSION": "18.19.0",
+        "installCommand": "pnpm install --production=false",
+        "command": "pnpm build",
+        "outputDirectory": "out"
+      }
+    }
+  }
+  

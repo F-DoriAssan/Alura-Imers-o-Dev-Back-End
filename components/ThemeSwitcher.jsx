@@ -12,7 +12,7 @@ export default function ThemeSwitcher() {
 
   return (
     <button onClick={toggleTheme}>
-      Cambiar Tema
+      O/I
     </button>
   );
 }

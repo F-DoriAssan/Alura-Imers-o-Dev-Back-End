@@ -1,8 +1,12 @@
 import './globals.css';
+
 import localFont from 'next/font/local';
+
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import AdminProvider from '@/context/admin-provider';
+import ContextProvider from '@/context/context';
 import { cn } from '@/lib/utils';
 
 export const metadata = {
@@ -21,13 +25,17 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${cn(
-          'min-h-screen bg-background text-foreground'
+          ' bg-background text-foreground'
         )} antialiased`}
       >
-        <ThemeProvider>
+           <ThemeProvider attribute="class" defaultTheme="dark">
+          <ContextProvider>
+            <AdminProvider>
           <Header />
           <main>{children}</main>
           <Footer />
+          </AdminProvider>
+          </ContextProvider>
         </ThemeProvider>
       </body>
     </html>
