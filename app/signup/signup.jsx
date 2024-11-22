@@ -1,9 +1,14 @@
 "use client";
-import { Context } from "@/context/context";
-import Loader from "@/components/loader";
-import Image from "next/image";
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+
+import Link from 'next/link';
+
+import Loader from '@/components/loader';
+import { Context } from '@/context/context';
 
 const Signup = () => {
   const { signup, setSignUp, handleSignUpSubmit, loading, error, message, theme } =
@@ -46,7 +51,7 @@ const Signup = () => {
             fill="#8b5cf6"
           />
         </svg>
-        <span className="text-lg font-semibold">AO VIVO FUTEBOL</span>
+        <span className="text-lg font-semibold">ALURA DEV | BACK-END </span>
       </Link>
 
       {/* Header Text */}
@@ -73,52 +78,50 @@ const Signup = () => {
         className="mt-8 w-full max-w-lg space-y-4"
       >
         <div>
-        <label htmlFor="name" className="block text-sm font-medium">
-  Nome
-</label>
-<input
-  type="text"
-  id="name"
-  name="name"
-  required
-  value={signup.name}
-  onChange={handleChange}
-  className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-  placeholder="Seu nome"
-/>
-
-<div>
-  <label htmlFor="email" className="block text-sm font-medium">
-    Email
-  </label>
-  <input
-    type="email"
-    id="email"
-    name="email"
-    required
-    value={signup.email}
-    onChange={handleChange}
-    className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-    placeholder="seuemail@example.com"
-/>
-</div>
-
-<div>
-  <label htmlFor="password" className="block text-sm font-medium">
-    Senha
-  </label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    required
-    value={signup.password}
-    onChange={handleChange}
-    className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-    placeholder="********"
-/>
-</div>
-</div>
+          <label htmlFor="name" className="block text-sm font-medium">
+            Nome
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={signup.name}
+            onChange={handleChange}
+            className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            placeholder="Seu nome"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={signup.email}
+            onChange={handleChange}
+            className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            placeholder="seuemail@example.com"
+          />
+        </div>
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium">
+            Senha
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            value={signup.password}
+            onChange={handleChange}
+            className="mt-1 w-full rounded-lg px-4 py-2 bg-red-100 dark:bg-gray-700 text-gray-300 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            placeholder="********"
+          />
+        </div>
 
         <button
           type="submit"

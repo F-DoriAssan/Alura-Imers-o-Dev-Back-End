@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import Link from "next/link";
 import { Context } from "@/context/context";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -26,7 +25,7 @@ const Header = () => {
           onClick={() => (window.location.href = "/")}
           className="text-2xl md:text-3xl font-bold tracking-wide hover:text-fuchsia-500 transition-colors duration-550ms cursor-pointer"
         >
-          Alura Dev
+          The Marketing
         </h1>
 
         {/* Navegación */}
@@ -34,12 +33,12 @@ const Header = () => {
           <ul className="flex space-x-6">
             {user?.data?.isAdmin && (
               <li>
-                <Link
+                <button
+                  onClick={() => (window.location.href = "/dashboard")}
                   className="px-4 py-2 text-white bg-transparent border-2 border-white rounded-md hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-550ms shadow-md"
-                  href="/dashboard"
                 >
                   Admin
-                </Link>
+                </button>
               </li>
             )}
           </ul>
@@ -62,18 +61,18 @@ const Header = () => {
           ) : (
             <div className="flex items-center gap-4">
               <ThemeSwitcher />
-              <Link
-                href="/login"
+              <button
+                onClick={() => (window.location.href = "/login")}
                 className="px-4 py-2 text-white bg-transparent border-2 hover:text-gray-500 border-white rounded-md hover:bg-fuchsia-500 hover:border-fuchsia-500 hover:scale-105 transition-transform duration-550ms shadow-md"
               >
                 Ingresar
-              </Link>
-              <Link
-                href="/signup"
+              </button>
+              <button
+                onClick={() => (window.location.href = "/signup")}
                 className="px-4 py-2 text-white bg-transparent border-2 hover:text-gray-500 border-white rounded-md hover:bg-pink-500 hover:border-pink-500 hover:scale-105 transition-transform duration-550ms shadow-md"
               >
                 Cadastre-se
-              </Link>
+              </button>
             </div>
           )}
         </div>

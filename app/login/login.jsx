@@ -1,8 +1,14 @@
 "use client";
-import { Context } from "@/context/context";
-import Loader from "@/components/loader";
-import Link from "next/link";
-import { useContext, useState, useEffect } from "react";
+import {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+
+import Link from 'next/link';
+
+import Loader from '@/components/loader';
+import { Context } from '@/context/context';
 
 const Login = () => {
   const { loading, error, message, login, setLogin, handleLoginSubmit, theme } =
@@ -48,7 +54,7 @@ const Login = () => {
             fill="#8b5cf6"
           />
         </svg>
-        <span className="text-lg font-semibold">AO VIVO FUTEBOL</span>
+        <span className="text-lg font-semibold">ALURA DEV | BACK-END</span>
       </Link>
 
       {/* Header Text */}

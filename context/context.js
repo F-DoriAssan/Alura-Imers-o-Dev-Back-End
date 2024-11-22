@@ -1,9 +1,14 @@
 "use client";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { createContext, useEffect, useState } from "react";
-import { debounce } from "lodash";
-import toast from "react-hot-toast";
+import {
+  createContext,
+  useEffect,
+  useState,
+} from 'react';
+
+import axios from 'axios';
+import { debounce } from 'lodash';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export const Context = createContext();
 const ContextProvider = ({ children }) => {
@@ -126,6 +131,7 @@ const ContextProvider = ({ children }) => {
       router.push("/");
     }
   }, [user?.isAdmin, router]);
+
   return (
     <Context.Provider
       value={{

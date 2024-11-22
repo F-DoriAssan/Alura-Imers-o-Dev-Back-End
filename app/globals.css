@@ -6,35 +6,106 @@
 /* Variables globales */
 @layer base {
   :root {
+    --font-primary: 'Audiowide', sans-serif; /* Elegante futurista */
+    --font-secondary: 'Orbitron', sans-serif; /* Decorativa */
+    --font-decorative: 'Exo', sans-serif; /* Versátil */
+
+    /* Colores generales */
     --main-background: 0 0% 98%;
     --main-background-dark: 224 71.4% 10%;
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 98%;
     --card-dark: 224 71.4% 15%;
-    --primary: 285 83% 60%;
-    --primary-light: 285 83% 75%;
-    --primary-hover: 285 83% 70%;
+    --primary: 320 70% 50%; /* Fucsia brillante */
+    --primary-light: 320 83% 70%;
+    --primary-hover: 320 83% 65%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 320 60% 55%;
+    --secondary: 340 75% 60%; /* Rosa vibrante */
+    --secondary-hover: 340 70% 55%;
     --muted: 320 60% 80%;
     --radius: 1rem;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    --paragraph-light: 285 83% 40%; /* Bordo claro */
+    --paragraph-dark: 285 83% 60%; /* Bordo oscuro */
   }
 
+  /* Modo oscuro */
   .dark {
     --main-background: 224 71.4% 6.1%;
     --background: 224 71.4% 6.1%;
     --foreground: 0 0% 98%;
     --card: 224 71.4% 15%;
-    --primary-light: 285 83% 50%;
-    --primary-hover: 285 83% 40%;
+    --primary-light: 320 75% 50%;
+    --primary-hover: 320 70% 45%;
+    --secondary-hover: 340 65% 50%;
     --muted: 224 71.4% 12%;
     --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    --paragraph-light: 285 83% 70%; /* Más brillante en oscuro */
+    --paragraph-dark: 285 83% 80%; /* Bordo más saturado */
+  }
+
+  /* Estilos globales para encabezados */
+  h1 {
+    font-family: var(--font-secondary);
+    font-size: 2.5rem;
+    color: hsl(var(--primary));
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  h2, h3, h4 {
+    font-family: var(--font-decorative);
+    color: hsl(var(--secondary));
+    letter-spacing: 0.08rem;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Párrafos */
+  p {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: hsl(var(--paragraph-light));
+    transition: var(--transition);
+  }
+
+  .dark p {
+    color: hsl(var(--paragraph-dark));
+  }
+
+  /* Textos pequeños */
+  small {
+    font-family: var(--font-secondary);
+    font-size: 0.875rem;
+    color: hsl(var(--muted));
+  }
+
+  /* Links */
+  a {
+    font-family: var(--font-primary);
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  a:hover {
+    color: hsl(var(--primary-hover));
   }
 }
-
 /* Scroll personalizado */
 ::-webkit-scrollbar {
   width: 10px;
@@ -76,15 +147,72 @@ body.dark ::-webkit-scrollbar-thumb {
 
 /* Body */
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
   background-color: var(--main-background);
   color: var(--foreground);
   overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Estilos generales */
+html {
+  font-size: 16px;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-primary); /* Fuente principal */
+}
+
+
+
+/* Estilo base para los botones */
+button {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid transparent; /* Inicialmente sin borde visible */
+  background: transparent;
+  color: var(--foreground); /* Color del texto */
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 999px; /* Bordes redondeados */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease, background 0.4s ease;
+  outline: none;
+  animation: vibrateBorder 1.5s infinite; /* Movimiento continuo del borde */
+  animation-play-state: running; /* Asegura que la animación se ejecute siempre */
+}
+
+/* Animación para el borde de luz vibrante */
+@keyframes vibrateBorder {
+  0% {
+    box-shadow: 0 0 5px 2px #8b5cf6, 0 0 15px 5px #f43f5e;
+  }
+  25% {
+    box-shadow: 0 0 15px 5px #f43f5e, 0 0 25px 10px #8b5cf6;
+  }
+  50% {
+    box-shadow: 0 0 25px 10px #8b5cf6, 0 0 35px 15px #f43f5e;
+  }
+  75% {
+    box-shadow: 0 0 35px 15px #f43f5e, 0 0 45px 20px #8b5cf6;
+  }
+  100% {
+    box-shadow: 0 0 45px 20px #8b5cf6, 0 0 55px 25px #f43f5e;
+  }
+}
+
+/* Efecto adicional de cambio de fondo y color en hover */
+button:hover {
+  animation-play-state: paused; /* Pausar la animación al hacer hover */
+  background: linear-gradient(270deg, #ec4899, #f43f5e, #8b5cf6);
+  background-size: 400% 400%;
+  color: #fff; /* Cambiar color de texto al pasar el mouse */
+  border: 2px solid #fff; /* Añadir borde blanco al pasar el mouse */
 }
 
 /* Header */
@@ -147,7 +275,7 @@ main {
   margin-top: 10%; /* Ajuste del margen superior */
   margin-bottom: 20px; /* Margen inferior */
   position: relative;
-  min-height: calc(100vh - 60px); /* Ajusta la altura del main para que se vea debajo del header */
+  height: 100%; /* Ajusta la altura del main para que se vea debajo del header */
   animation: fadeIn 1s ease-out, moveBackground 5s ease-in-out infinite;
   transition: var(--transition, all 0.3s ease);
 }
@@ -178,15 +306,12 @@ main {
 }
 
 /* Animación de hover para el main */
-main:hover {
-  transform: scale(1.03);
-}
 
 /* Ajustes en pantallas medianas */
 @media (max-width: 1024px) {
   main {
     padding: 1.5rem;
-    margin-top: 8%; /* Reducir el margen en pantallas medianas */
+    margin-top: 2%; /* Reducir el margen en pantallas medianas */
   }
 }
 
@@ -195,109 +320,19 @@ main:hover {
   main {
     padding: 1rem;
     max-width: 100%;
-    margin-top: 6%; /* Reducir más el margen en pantallas pequeñas */
+    margin-top: 2%; /* Reducir más el margen en pantallas pequeñas */
   }
 }
 
-/* Ajustes en pantallas muy pequeñas */
+/* Ajustes en móviles */
 @media (max-width: 480px) {
   main {
     padding: 0.8rem;
-    margin-top: 4%; /* Ajustar aún más el margen en pantallas pequeñas */
+    margin-top: 3%;
   }
 }
 
-/* Section */
-section {
-  width: 100%;
-  max-width: 1200px;
-  height: auto; /* Altura dinámica, se ajusta al contenido */
-  padding: 1rem;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto; /* Márgenes auto para centrar */
-}
+/* Importa fuentes futuristas de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Exo:wght@300;400;700&family=Orbitron:wght@400;700&display=swap');
 
-/* Responsive Section */
-@media (max-width: 1024px) {
-  section {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  section {
-    padding: 0.5rem;
-  }
-}
-
-
-
-
-/* Estilo para el main */
-
-body.dark main {
-  background: var(--main-background-dark);
-}
-
-
-
-/* Cards */
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
-  padding: 1.5rem;
-  margin: 1rem;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  text-align: center;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-body.dark .card {
-  background: var(--card-dark);
-}
-
-/* Footer */
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 1.5rem 2rem;
-  color: var(--foreground);
-  background: linear-gradient(270deg, var(--primary-light), var(--primary), var(--secondary));
-  background-size: 300% 300%;
-  animation: gradientMoveFooter 6s infinite linear, glowFooter 4s infinite alternate;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-  transition: var(--transition);
-}
-
-
-
-body.dark footer {
-  background: linear-gradient(270deg, var(--primary), var(--secondary), var(--primary-light)); /* Fondo fijo para modo oscuro */
-}
 
