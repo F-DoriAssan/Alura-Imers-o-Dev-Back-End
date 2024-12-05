@@ -94,17 +94,52 @@
     color: hsl(var(--muted));
   }
 
-  /* Links */
-  a {
-    font-family: var(--font-primary);
-    color: hsl(var(--primary));
-    text-decoration: none;
-    transition: var(--transition);
-  }
+  /* Estilo base para los enlaces */
+a {
+  padding: 0.5rem 1.5rem;
+  display: inline-block; /* Asegura que los enlaces respeten el padding */
+  text-decoration: none; /* Quita el subrayado por defecto */
+  border: 2px solid transparent; /* Inicialmente sin borde visible */
+  background: transparent;
+  color: var(--foreground); /* Color del texto */
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 999px; /* Bordes redondeados */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease, background 0.4s ease;
+  animation: vibrateBorder 1.5s infinite; /* Movimiento continuo del borde */
+  animation-play-state: running; /* Asegura que la animación se ejecute siempre */
+}
 
-  a:hover {
-    color: hsl(var(--primary-hover));
+/* Animación para el borde de luz vibrante */
+@keyframes vibrateBorder {
+  0% {
+    box-shadow: 0 0 5px 2px #8b5cf6, 0 0 15px 5px #f43f5e;
   }
+  25% {
+    box-shadow: 0 0 15px 5px #f43f5e, 0 0 25px 10px #8b5cf6;
+  }
+  50% {
+    box-shadow: 0 0 25px 10px #8b5cf6, 0 0 35px 15px #f43f5e;
+  }
+  75% {
+    box-shadow: 0 0 35px 15px #f43f5e, 0 0 45px 20px #8b5cf6;
+  }
+  100% {
+    box-shadow: 0 0 45px 20px #8b5cf6, 0 0 55px 25px #f43f5e;
+  }
+}
+
+/* Efecto adicional de cambio de fondo y color en hover */
+a:hover {
+  animation-play-state: paused; /* Pausar la animación al hacer hover */
+  background: linear-gradient(270deg, #ec4899, #f43f5e, #8b5cf6);
+  background-size: 400% 400%;
+  color: #fff; /* Cambiar color de texto al pasar el mouse */
+  border: 2px solid #fff; /* Añadir borde blanco al pasar el mouse */
+}
 }
 /* Scroll personalizado */
 ::-webkit-scrollbar {
@@ -307,30 +342,13 @@ main {
 
 /* Animación de hover para el main */
 
-/* Ajustes en pantallas medianas */
-@media (max-width: 1024px) {
-  main {
-    padding: 1.5rem;
-    margin-top: 2%; /* Reducir el margen en pantallas medianas */
-  }
-}
+
 
 /* Ajustes en pantallas pequeñas */
-@media (max-width: 768px) {
-  main {
-    padding: 1rem;
-    max-width: 100%;
-    margin-top: 2%; /* Reducir más el margen en pantallas pequeñas */
-  }
-}
+
 
 /* Ajustes en móviles */
-@media (max-width: 480px) {
-  main {
-    padding: 0.8rem;
-    margin-top: 3%;
-  }
-}
+
 
 /* Importa fuentes futuristas de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Exo:wght@300;400;700&family=Orbitron:wght@400;700&display=swap');

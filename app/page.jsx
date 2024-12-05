@@ -1,19 +1,22 @@
 "use client";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import {
+  useEffect,
+  useRef,
+} from 'react';
+
+import { gsap } from 'gsap';
 
 export default function Home() {
   const paragraphRef = useRef(null);
-  const circleRef = useRef(null); // Referencia para el círculo pulsante
-  const containerRef = useRef(null); // Referencia para el contenedor
+  const circleRef = useRef(null);
+  const containerRef = useRef(null);
   const venderRef = useRef(null);
   const bastaRef = useRef(null);
   const lidereRef = useRef(null);
-  const marketingRef = useRef(null); // Referencia para el texto themarketing.com.br
-  const backgroundRef = useRef(null); // Referencia para el fondo animado
+  const marketingRef = useRef(null);
+  const backgroundRef = useRef(null);
 
   useEffect(() => {
-    // Animaciones en cascada para cada sección del título
     gsap.timeline({ repeat: -1, repeatDelay: 2 })
       .fromTo(
         [venderRef.current, bastaRef.current, lidereRef.current],
@@ -26,7 +29,6 @@ export default function Home() {
         "+=2"
       );
 
-    // Animación para el párrafo
     const letters = paragraphRef.current.querySelectorAll("span");
     gsap.timeline({ repeat: -1, repeatDelay: 2 })
       .fromTo(
@@ -52,7 +54,6 @@ export default function Home() {
         "+=2"
       );
 
-    // Animación de círculo pulsante con límites
     const container = containerRef.current;
     const circle = circleRef.current;
 
@@ -71,7 +72,6 @@ export default function Home() {
       yoyo: true,
     });
 
-    // Animación para el texto themarketing.com.br
     gsap.timeline({ repeat: -1, repeatDelay: 3 })
       .fromTo(
         marketingRef.current,
@@ -84,7 +84,6 @@ export default function Home() {
         "+=3"
       );
 
-    // Animación para el fondo dinámico
     gsap.to(backgroundRef.current, {
       backgroundPosition: "200% 0%",
       duration: 5,
@@ -98,42 +97,41 @@ export default function Home() {
     <div>
       <section
         ref={containerRef}
-        className="relative bg-card text-foreground p-6 rounded-lg shadow-md transition-colors overflow-hidden flex flex-col md:flex-row items-center"
+        className="relative bg-card text-foreground p-6 rounded-lg shadow-md transition-colors overflow-hidden flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6"
       >
-        {/* Fondo dinámico */}
         <div
           ref={backgroundRef}
           className="section-background absolute inset-0 bg-gradient-to-r from-fuchsia-500 to-purple-500 z-0 bg-cover bg-fixed"
         ></div>
 
-        {/* Círculo pulsante */}
         <div
           ref={circleRef}
-          className="w-32 h-32 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 absolute z-10 pointer-events-none"
+          className="w-16 h-16 md:w-32 md:h-32 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 absolute z-10 pointer-events-none"
         ></div>
 
-        {/* Contenido principal */}
         <div className="relative z-10 flex-1 text-center md:text-left mb-6 md:mb-0">
           <h1
             ref={venderRef}
-            className="text-4xl font-bold uppercase text-primary mb-2"
+            className="text-2xl md:text-4xl font-bold uppercase text-primary mb-2"
           >
             VENDER NÃO
           </h1>
           <h1
             ref={bastaRef}
-            className="text-6xl font-black uppercase text-rose-600 mb-2"
+            className="text-4xl md:text-6xl font-black uppercase text-rose-600 mb-2"
           >
             BASTA
           </h1>
-          <h2 ref={lidereRef} className="text-3xl font-bold text-muted mt-4">
+          <h2
+            ref={lidereRef}
+            className="text-xl md:text-3xl font-bold text-muted mt-4"
+          >
             LIDERE O MERCADO!
           </h2>
 
-          {/* Párrafo animado con letras más grandes */}
           <p
             ref={paragraphRef}
-            className="relative text-2xl font-semibold tracking-wide mt-4 leading-snug"
+            className="relative text-lg md:text-2xl font-semibold tracking-wide mt-4 leading-snug"
           >
             {"Estratégias que maximizam resultados e conectam seu produto ao público certo...!".split(
               ""
@@ -145,10 +143,9 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Texto animado themarketing.com.br */}
         <div
           ref={marketingRef}
-          className="relative z-10 flex-1 text-center md:text-right text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
+          className="relative z-10 flex-1 text-center md:text-right text-xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
         >
           themarketing.com.br
         </div>
